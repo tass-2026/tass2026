@@ -44,7 +44,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 shrink-0" />
-                <span>info@tassnigeria2026.org</span>
+                <a href="mailto:tass2026@uniabuja.edu.ng" className="hover:text-accent transition-colors">tass2026@uniabuja.edu.ng</a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 shrink-0" />
