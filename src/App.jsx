@@ -6,7 +6,16 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
-// Add page imports here
+import Layout from '@/components/conference/Layout';
+import Home from '@/pages/Home';
+import About from '@/pages/About';
+import Themes from '@/pages/Themes';
+import Programme from '@/pages/Programme';
+import Hackathon from '@/pages/Hackathon';
+import Exhibition from '@/pages/Exhibition';
+import Sponsorship from '@/pages/Sponsorship';
+import Register from '@/pages/Register';
+import Contact from '@/pages/Contact';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -34,7 +43,17 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
-      {/* Add your page Route elements here */}
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/themes" element={<Themes />} />
+        <Route path="/programme" element={<Programme />} />
+        <Route path="/hackathon" element={<Hackathon />} />
+        <Route path="/exhibition" element={<Exhibition />} />
+        <Route path="/sponsorship" element={<Sponsorship />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -1,0 +1,125 @@
+import React from "react";
+import { motion } from "framer-motion";
+import SectionHeading from "@/components/conference/SectionHeading";
+import { Mail, Phone, MapPin, Send, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+export default function Contact() {
+  const [submitted, setSubmitted] = React.useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div className="pt-20">
+      <section className="py-20 md:py-28 bg-muted/50">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <SectionHeading
+            label="Get in Touch"
+            title="Contact Us"
+            description="Have questions about TASS Nigeria 2026? Reach out to the conference secretariat."
+            align="center"
+          />
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+            {/* Contact Info */}
+            <div className="lg:col-span-2 space-y-8">
+              <div>
+                <h3 className="font-heading font-bold text-lg mb-4">Conference Secretariat</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  ICMRISD Nigeria 2026<br />
+                  Centre for Migration Research & Interdisciplinary Studies (CEMRI)<br />
+                  University of Abuja
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  { icon: MapPin, label: "University of Abuja, FCT, Nigeria" },
+                  { icon: Mail, label: "info@tassnigeria2026.org" },
+                  { icon: Phone, label: "+234 (0) 800 TASS 2026" },
+                  { icon: Globe, label: "www.tassnigeria2026.org" },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <item.icon className="w-4 h-4 text-accent" />
+                    </div>
+                    <span className="text-sm text-muted-foreground mt-2">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="lg:col-span-3">
+              {submitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-accent/10 border border-accent/20 rounded-2xl p-10 text-center"
+                >
+                  <div className="w-14 h-14 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+                    <Send className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="font-heading font-bold text-xl mb-2">Message Sent!</h3>
+                  <p className="text-sm text-muted-foreground">Thank you for your interest. The conference secretariat will respond within 48 hours.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium mb-1.5 block">Full Name</label>
+                      <Input placeholder="Your full name" required />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-1.5 block">Email</label>
+                      <Input type="email" placeholder="you@example.com" required />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium mb-1.5 block">Institution / Organization</label>
+                      <Input placeholder="Your institution" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-1.5 block">Enquiry Type</label>
+                      <Select>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="registration">Registration</SelectItem>
+                          <SelectItem value="submission">Paper Submission</SelectItem>
+                          <SelectItem value="sponsorship">Sponsorship</SelectItem>
+                          <SelectItem value="exhibition">Exhibition</SelectItem>
+                          <SelectItem value="hackathon">Hackathon</SelectItem>
+                          <SelectItem value="other">General Enquiry</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-1.5 block">Message</label>
+                    <Textarea placeholder="Tell us how we can help..." rows={5} required />
+                  </div>
+                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full h-12 font-semibold">
+                    <Send className="w-4 h-4 mr-2" /> Send Message
+                  </Button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

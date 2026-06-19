@@ -1,228 +1,101 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { UserPlus, Mail, Lock, Loader2 } from "lucide-react";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
-import AuthLayout from "@/components/AuthLayout";
-import GoogleIcon from "@/components/GoogleIcon";
-import { toast } from "@/components/ui/use-toast";
+import React from "react";
+import { motion } from "framer-motion";
+import SectionHeading from "@/components/conference/SectionHeading";
+import { Calendar, Check, Info } from "lucide-react";
+
+const registrationFees = [
+  { category: "Nigerian Academic / Researcher", earlyBird: "₦75,000", standard: "₦100,000" },
+  { category: "International Academic / Researcher", earlyBird: "$200", standard: "$300" },
+  { category: "Postgraduate Student (Nigerian)", earlyBird: "₦30,000", standard: "₦50,000" },
+  { category: "Postgraduate Student (International)", earlyBird: "$100", standard: "$150" },
+  { category: "Industry / Corporate Delegate", earlyBird: "₦150,000", standard: "₦200,000" },
+  { category: "Virtual Attendance", earlyBird: "₦20,000 / $50", standard: "₦30,000 / $75" },
+];
 
 export default function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [showOtp, setShowOtp] = useState(false);
-  const [otpCode, setOtpCode] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-    setLoading(true);
-    try {
-      await base44.auth.register({ email, password });
-      setShowOtp(true);
-    } catch (err) {
-      setError(err.message || "Registration failed");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleVerify = async () => {
-    setError("");
-    setLoading(true);
-    try {
-      const result = await base44.auth.verifyOtp({ email, otpCode });
-      if (result?.access_token) {
-        base44.auth.setToken(result.access_token);
-      }
-      window.location.href = "/";
-    } catch (err) {
-      setError(err.message || "Invalid verification code");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResend = async () => {
-    setError("");
-    try {
-      await base44.auth.resendOtp(email);
-      toast({
-        title: "Code sent",
-        description: "Check your email for the new code.",
-      });
-    } catch (err) {
-      setError(err.message || "Failed to resend code");
-    }
-  };
-
-  const handleGoogle = () => {
-    base44.auth.loginWithProvider("google", "/");
-  };
-
-  if (showOtp) {
-    return (
-      <AuthLayout
-        icon={Mail}
-        title="Verify your email"
-        subtitle={`We sent a code to ${email}`}
-      >
-        {error && (
-          <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
-            {error}
-          </div>
-        )}
-        <div className="flex justify-center mb-6">
-          <InputOTP
-            maxLength={6}
-            value={otpCode}
-            onChange={setOtpCode}
-            autoFocus
-            autoComplete="one-time-code"
-          >
-            <InputOTPGroup>
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
-              <InputOTPSlot index={3} />
-              <InputOTPSlot index={4} />
-              <InputOTPSlot index={5} />
-            </InputOTPGroup>
-          </InputOTP>
-        </div>
-        <Button
-          className="w-full h-12 font-medium"
-          onClick={handleVerify}
-          disabled={loading || otpCode.length < 6}
-        >
-          {loading ? (
-            <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Verifying...
-            </>
-          ) : (
-            "Verify"
-          )}
-        </Button>
-        <p className="text-center text-sm text-muted-foreground mt-4">
-          Didn't receive the code?{" "}
-          <button onClick={handleResend} className="text-primary font-medium hover:underline">
-            Resend
-          </button>
-        </p>
-      </AuthLayout>
-    );
-  }
-
   return (
-    <AuthLayout
-      icon={UserPlus}
-      title="Create your account"
-      subtitle="Sign up to get started"
-      footer={
-        <>
-          Already have an account?{" "}
-          <Link to="/login" className="text-primary font-medium hover:underline">
-            Log in
-          </Link>
-        </>
-      }
-    >
-      <Button
-        variant="outline"
-        className="w-full h-12 text-sm font-medium mb-6"
-        onClick={handleGoogle}
-      >
-        <GoogleIcon className="w-5 h-5 mr-2" />
-        Continue with Google
-      </Button>
-
-      <div className="relative mb-6">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-border" />
+    <div className="pt-20">
+      <section className="py-20 md:py-28 bg-muted/50">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <SectionHeading
+            label="Registration"
+            title="Delegate Registration Fees"
+            description="Early bird rates close 30 September 2026. Group discount: 15% off standard rates for 5 or more delegates from one institution."
+            align="center"
+          />
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-card px-3 text-muted-foreground">or</span>
-        </div>
-      </div>
+      </section>
 
-      {error && (
-        <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
-          {error}
-        </div>
-      )}
+      <section className="py-16 md:py-24">
+        <div className="max-w-[900px] mx-auto px-6 md:px-10">
+          {/* Fees Table */}
+          <div className="rounded-2xl border border-border overflow-hidden mb-10">
+            <div className="grid grid-cols-3 bg-primary text-primary-foreground">
+              <div className="p-4 font-heading font-semibold text-sm">Category</div>
+              <div className="p-4 font-heading font-semibold text-sm text-center">
+                <span className="flex items-center justify-center gap-1">
+                  Early Bird
+                </span>
+              </div>
+              <div className="p-4 font-heading font-semibold text-sm text-center">Standard</div>
+            </div>
+            {registrationFees.map((fee, i) => (
+              <motion.div
+                key={fee.category}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className={`grid grid-cols-3 border-t border-border ${i % 2 === 0 ? "bg-card" : "bg-muted/30"}`}
+              >
+                <div className="p-4 text-sm font-medium text-foreground">{fee.category}</div>
+                <div className="p-4 text-sm text-center font-semibold text-accent">{fee.earlyBird}</div>
+                <div className="p-4 text-sm text-center text-muted-foreground">{fee.standard}</div>
+              </motion.div>
+            ))}
+          </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
-            <Input
-              id="email"
-              type="email"
-              autoComplete="email"
-              autoFocus
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="pl-10 h-12"
-              required
-            />
+          {/* Info Box */}
+          <div className="bg-secondary/5 border border-secondary/20 rounded-xl p-5 flex items-start gap-3 mb-10">
+            <Info className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+            <div className="text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground mb-1">Important Dates</p>
+              <ul className="space-y-1">
+                <li className="flex items-center gap-2">
+                  <Calendar className="w-3.5 h-3.5 text-accent" />
+                  Early bird registration closes: <strong>30 September 2026</strong>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Calendar className="w-3.5 h-3.5 text-accent" />
+                  Conference dates: <strong>09–12 November 2026</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* What's Included */}
+          <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+            <h3 className="font-heading font-bold text-lg mb-4">Registration Includes</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                "Access to all plenary sessions",
+                "Track session participation",
+                "Conference materials & badge",
+                "Exhibition hall access",
+                "Networking breaks & lunch",
+                "Certificate of attendance",
+                "Digital proceedings access",
+                "Live-stream access (virtual)",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Check className="w-4 h-4 text-accent shrink-0" />
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <div className="relative">
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
-            <Input
-              id="password"
-              type="password"
-              autoComplete="new-password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="pl-10 h-12"
-              required
-            />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="confirm">Confirm Password</Label>
-          <div className="relative">
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
-            <Input
-              id="confirm"
-              type="password"
-              autoComplete="new-password"
-              placeholder="••••••••"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="pl-10 h-12"
-              required
-            />
-          </div>
-        </div>
-        <Button type="submit" className="w-full h-12 font-medium" disabled={loading}>
-          {loading ? (
-            <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Creating account...
-            </>
-          ) : (
-            "Create account"
-          )}
-        </Button>
-      </form>
-    </AuthLayout>
+      </section>
+    </div>
   );
 }
