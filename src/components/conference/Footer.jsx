@@ -32,7 +32,7 @@ export default function Footer() {
             <img
               src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/14974f33a_logo_200x64.jpeg"
               alt="TASS Nigeria 2026"
-              className="h-14 w-auto object-contain mb-4"
+              className="h-14 w-auto object-contain mb-4 rounded-lg bg-white p-2"
             />
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-sm mb-6">
               Technology. Arts. Science. Society. Solutions.
