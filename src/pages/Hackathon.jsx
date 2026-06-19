@@ -6,12 +6,12 @@ import { Trophy, Clock, Users, Zap, Code, Shield, Leaf, Heart, GraduationCap } f
 const HACKATHON_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/57f880cfe_generated_8b9e609f.png";
 
 const hackathonTracks = [
-  { icon: Zap, title: "EdTech & Digital Learning", desc: "Solutions for accessible, quality education across Africa." },
-  { icon: Heart, title: "HealthTech & Telemedicine", desc: "Digital health innovations for underserved communities." },
-  { icon: Leaf, title: "AgriTech & Food Security", desc: "Technology for sustainable agriculture and nutrition." },
-  { icon: Shield, title: "GovTech & Civic Innovation", desc: "Platforms for transparency, governance, and citizen engagement." },
-  { icon: Code, title: "FinTech & Financial Inclusion", desc: "Solutions bridging the financial services gap." },
-  { icon: GraduationCap, title: "Open Innovation", desc: "Any technology solution addressing SDGs in Africa." },
+  { icon: Zap, title: "EdTech & Digital Learning", desc: "Solutions for accessible, quality education across Africa.", bg: "bg-yellow-50 border-yellow-200", iconColor: "text-yellow-700" },
+  { icon: Heart, title: "HealthTech & Telemedicine", desc: "Digital health innovations for underserved communities.", bg: "bg-red-50 border-red-200", iconColor: "text-red-600" },
+  { icon: Leaf, title: "AgriTech & Food Security", desc: "Technology for sustainable agriculture and nutrition.", bg: "bg-green-50 border-green-200", iconColor: "text-green-700" },
+  { icon: Shield, title: "GovTech & Civic Innovation", desc: "Platforms for transparency, governance, and citizen engagement.", bg: "bg-blue-50 border-blue-200", iconColor: "text-blue-700" },
+  { icon: Code, title: "FinTech & Financial Inclusion", desc: "Solutions bridging the financial services gap.", bg: "bg-purple-50 border-purple-200", iconColor: "text-purple-700" },
+  { icon: GraduationCap, title: "Open Innovation", desc: "Any technology solution addressing SDGs in Africa.", bg: "bg-orange-50 border-orange-200", iconColor: "text-orange-700" },
 ];
 
 const prizes = [
@@ -63,9 +63,9 @@ export default function Hackathon() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-card border border-border rounded-2xl p-6 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+                className={`rounded-2xl p-6 border hover:shadow-lg transition-all duration-300 ${t.bg}`}
               >
-                <t.icon className="w-6 h-6 text-accent mb-4" />
+                <t.icon className={`w-6 h-6 mb-4 ${t.iconColor}`} />
                 <h3 className="font-heading font-bold text-lg mb-2">{t.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{t.desc}</p>
               </motion.div>

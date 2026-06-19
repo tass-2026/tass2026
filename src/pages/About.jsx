@@ -6,12 +6,12 @@ import { Globe, Award, Lightbulb, Users, BookOpen, Handshake } from "lucide-reac
 const SCHOLARS_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/c5692d51c_generated_0a16fbea.png";
 
 const features = [
-  { icon: Globe, title: "International Platform", desc: "Bringing together leading researchers, innovators, and policymakers from across Africa and around the world." },
-  { icon: Award, title: "Peer-Reviewed Research", desc: "Rigorous academic paper presentations across 17 thematic tracks with structured roundtables." },
-  { icon: Lightbulb, title: "Innovation Exhibition", desc: "A curated technology and innovation exhibition showcasing cutting-edge solutions." },
-  { icon: Users, title: "Policy Dialogue Forum", desc: "A dedicated forum where scientific advancements are examined within broader societal and policy contexts." },
-  { icon: BookOpen, title: "Cross-Disciplinary", desc: "Sessions structured to foster interaction between technical research, social inquiry, and ethical reflection." },
-  { icon: Handshake, title: "Industry Partnerships", desc: "Creating a dynamic environment for knowledge exchange between academia and industry." },
+  { icon: Globe, title: "International Platform", desc: "Bringing together leading researchers, innovators, and policymakers from across Africa and around the world.", bg: "bg-green-50", iconBg: "bg-green-100", iconColor: "text-green-700" },
+  { icon: Award, title: "Peer-Reviewed Research", desc: "Rigorous academic paper presentations across 17 thematic tracks with structured roundtables.", bg: "bg-yellow-50", iconBg: "bg-yellow-100", iconColor: "text-yellow-700" },
+  { icon: Lightbulb, title: "Innovation Exhibition", desc: "A curated technology and innovation exhibition showcasing cutting-edge solutions.", bg: "bg-orange-50", iconBg: "bg-orange-100", iconColor: "text-orange-700" },
+  { icon: Users, title: "Policy Dialogue Forum", desc: "A dedicated forum where scientific advancements are examined within broader societal and policy contexts.", bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
+  { icon: BookOpen, title: "Cross-Disciplinary", desc: "Sessions structured to foster interaction between technical research, social inquiry, and ethical reflection.", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700" },
+  { icon: Handshake, title: "Industry Partnerships", desc: "Creating a dynamic environment for knowledge exchange between academia and industry.", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700" },
 ];
 
 export default function About() {
@@ -60,10 +60,10 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-card border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg hover:border-accent/20 transition-all duration-300"
+                className={`border border-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 ${f.bg}`}
               >
-                <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                  <f.icon className="w-5 h-5 text-accent" />
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${f.iconBg}`}>
+                  <f.icon className={`w-5 h-5 ${f.iconColor}`} />
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
@@ -85,12 +85,12 @@ export default function About() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
-              { val: "17", label: "Thematic Tracks" },
-              { val: "₦10M+", label: "Total Prize Pool" },
-              { val: "4 Days", label: "Of Programming" },
+            { val: "17", label: "Thematic Tracks", color: "text-yellow-400" },
+            { val: "₦10M+", label: "Total Prize Pool", color: "text-green-400" },
+            { val: "4 Days", label: "Of Programming", color: "text-orange-400" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="font-display font-extrabold text-5xl text-accent mb-2">{stat.val}</p>
+            <div key={stat.label} className="text-center">
+              <p className={`font-display font-extrabold text-5xl mb-2 ${stat.color}`}>{stat.val}</p>
                 <p className="text-primary-foreground/50 text-sm">{stat.label}</p>
               </div>
             ))}

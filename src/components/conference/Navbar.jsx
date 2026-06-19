@@ -32,10 +32,12 @@ export default function Navbar() {
         scrolled ? "bg-background/90 backdrop-blur-xl shadow-sm" : "bg-transparent"
       }`}>
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-3 group">
-            <span className="font-display font-extrabold text-lg tracking-tight text-foreground">
-              TASS<span className="text-accent">.</span>2026
-            </span>
+          <Link to="/" className="flex items-center gap-2 group">
+            <img
+              src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/d90e800be_generated_image.png"
+              alt="TASS 2026 Logo"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -55,7 +57,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               to="/register"
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-foreground text-sm font-semibold rounded-full hover:bg-accent/90 transition-all"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-full hover:bg-green-700 transition-all"
             >
               Register Now <ArrowRight className="w-4 h-4" />
             </Link>
@@ -97,7 +99,7 @@ export default function Navbar() {
             </div>
             <Link
               to="/register"
-              className="mt-10 inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-full w-fit"
+              className="mt-10 inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-full w-fit"
             >
               Register Now <ArrowRight className="w-4 h-4" />
             </Link>

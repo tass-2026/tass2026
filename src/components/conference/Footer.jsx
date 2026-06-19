@@ -29,9 +29,11 @@ export default function Footer() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           <div className="lg:col-span-2">
-            <h3 className="font-display font-extrabold text-2xl mb-4">
-              TASS<span className="text-accent">.</span>2026
-            </h3>
+            <img
+              src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/d90e800be_generated_image.png"
+              alt="TASS 2026 Logo"
+              className="h-16 w-auto object-contain mb-4 brightness-0 invert"
+            />
             <p className="text-primary-foreground/60 text-sm leading-relaxed max-w-sm mb-6">
               Technology. Arts. Science. Society. Solutions.
               <br />

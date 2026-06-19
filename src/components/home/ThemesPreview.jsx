@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import SectionHeading from "../conference/SectionHeading";
 
 const tracks = [
-  { icon: Atom, title: "STEM & Applied Science", desc: "Natural sciences, engineering, technology, and applied research frontiers." },
-  { icon: Users, title: "Social Sciences", desc: "Sociology, economics, political science, and public policy research." },
-  { icon: BookOpen, title: "Humanities", desc: "Arts, culture, languages, philosophy, and historical research." },
-  { icon: Briefcase, title: "Management Sciences", desc: "Business, entrepreneurship, innovation management, and organizational studies." },
+  { icon: Atom, title: "STEM & Applied Science", desc: "Natural sciences, engineering, technology, and applied research frontiers.", color: "bg-green-50 border-green-200 hover:border-green-400", iconBg: "bg-green-100", iconColor: "text-green-700" },
+  { icon: Users, title: "Social Sciences", desc: "Sociology, economics, political science, and public policy research.", color: "bg-blue-50 border-blue-200 hover:border-blue-400", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
+  { icon: BookOpen, title: "Humanities", desc: "Arts, culture, languages, philosophy, and historical research.", color: "bg-yellow-50 border-yellow-200 hover:border-yellow-400", iconBg: "bg-yellow-100", iconColor: "text-yellow-700" },
+  { icon: Briefcase, title: "Management Sciences", desc: "Business, entrepreneurship, innovation management, and organizational studies.", color: "bg-orange-50 border-orange-200 hover:border-orange-400", iconBg: "bg-orange-100", iconColor: "text-orange-700" },
 ];
 
 export default function ThemesPreview() {
@@ -40,12 +40,12 @@ export default function ThemesPreview() {
             >
               <Link
                 to="/themes"
-                className="group block bg-card rounded-2xl p-6 md:p-8 border border-border hover:border-accent/30 hover:shadow-lg transition-all duration-300 h-full"
+                className={`group block rounded-2xl p-6 md:p-8 border transition-all duration-300 h-full hover:shadow-lg ${track.color}`}
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
-                  <track.icon className="w-6 h-6 text-accent" />
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${track.iconBg}`}>
+                  <track.icon className={`w-6 h-6 ${track.iconColor}`} />
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2 text-foreground group-hover:text-accent transition-colors">
+                <h3 className={`font-heading font-bold text-lg mb-2 text-foreground`}>
                   {track.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">

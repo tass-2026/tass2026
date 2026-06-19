@@ -28,18 +28,18 @@ export default function HeroSection() {
               transition={{ duration: 0.8 }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block w-8 h-px bg-accent" />
-                <span className="text-accent text-xs font-semibold uppercase tracking-[0.2em]">
+                <span className="inline-block w-8 h-px bg-yellow-400" />
+                <span className="text-yellow-400 text-xs font-semibold uppercase tracking-[0.2em]">
                   ICMRISD Nigeria 2026
                 </span>
               </div>
 
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.95] tracking-tight mb-6">
-                Technology.
+                <span className="text-green-400">Technology.</span>
                 <br />
-                Arts. Science.
+                <span className="text-yellow-400">Arts.</span> Science.
                 <br />
-                <span className="text-accent">Society.</span>
+                <span className="text-orange-400">Society.</span>
               </h1>
 
               <p className="text-white/60 text-base md:text-lg max-w-lg leading-relaxed mb-8">
@@ -59,7 +59,7 @@ export default function HeroSection() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/register"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-white font-semibold rounded-full hover:bg-accent/90 transition-all text-sm"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all text-sm"
                 >
                   Register Now <ArrowRight className="w-4 h-4" />
                 </Link>

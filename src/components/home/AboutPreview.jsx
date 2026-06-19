@@ -40,7 +40,7 @@ export default function AboutPreview() {
             <div className="rounded-2xl overflow-hidden aspect-[4/3]">
               <img src={SCHOLARS_IMG} alt="Scholars in academic discussion" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground rounded-xl p-5 shadow-xl hidden md:block">
+            <div className="absolute -bottom-6 -left-6 bg-green-600 text-white rounded-xl p-5 shadow-xl hidden md:block">
               <p className="font-display font-extrabold text-3xl">4</p>
               <p className="text-sm font-medium opacity-80">Days of<br/>Innovation</p>
             </div>
