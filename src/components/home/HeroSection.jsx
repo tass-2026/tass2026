@@ -30,7 +30,7 @@ export default function HeroSection() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="inline-block w-8 h-px bg-yellow-400" />
                 <span className="text-yellow-400 text-xs font-semibold uppercase tracking-[0.2em]">
-                  ICMRISD Nigeria 2026
+                  TASS Nigeria 2026
                 </span>
               </div>
 
@@ -52,7 +52,7 @@ export default function HeroSection() {
                 </span>
                 <span className="w-px h-4 bg-white/20" />
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" /> Abuja, Nigeria
+                  <MapPin className="w-4 h-4" /> University of Abuja, Nigeria
                 </span>
               </div>
 
