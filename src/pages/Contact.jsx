@@ -36,7 +36,7 @@ export default function Contact() {
               <div>
                 <h3 className="font-heading font-bold text-lg mb-4">Conference Secretariat</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  ICMRISD Nigeria 2026<br />
+                  TASS Nigeria 2026<br />
                   Centre for Migration Research & Interdisciplinary Studies (CEMRI)<br />
                   University of Abuja
                 </p>
