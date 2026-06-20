@@ -6,22 +6,20 @@ import SectionHeading from "@/components/conference/SectionHeading";
 const categories = ["All", "University of Abuja", "Abuja City"];
 
 const photos = [
-  // UniAbuja
-  { src: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80", caption: "University of Abuja Main Campus", category: "University of Abuja" },
-  { src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80", caption: "Campus Library & Academic Block", category: "University of Abuja" },
-  { src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80", caption: "Research & Innovation Hub", category: "University of Abuja" },
-  { src: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80", caption: "Lecture Hall — Engineering Faculty", category: "University of Abuja" },
-  { src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80", caption: "Student Centre", category: "University of Abuja" },
-  { src: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&q=80", caption: "Campus Green & Gardens", category: "University of Abuja" },
+  // University of Abuja — uploaded images
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/0c7eb669f_WhatsAppImage2026-05-23at2012201.jpg", caption: "University of Abuja Campus Grounds", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/72cb8d68d_WhatsAppImage2026-05-23at2012208.jpg", caption: "University of Abuja Main Gate", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/dde67b78d_WhatsAppImage2026-05-23at201220.jpeg", caption: "Campus Gardens & Open Spaces", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/068abd991_WhatsAppImage2026-05-23at2012211.jpg", caption: "Academic Building — University of Abuja", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/4acdd2d10_WhatsAppImage2026-05-23at201221.jpg", caption: "University of Abuja — Second Gate", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/041ef567a_WhatsAppImage2026-05-23at2012202.jpg", caption: "Students on Campus Grounds", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/33a19b90b_WhatsAppImage2026-05-23at2012203.jpeg", caption: "University of Abuja Sign", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/b4eb53a9f_WhatsAppImage2026-05-23at2012204.jpg", caption: "Graduation Ceremony — UniAbuja", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/5e714cfb1_WhatsAppImage2026-05-23at2012205.jpg", caption: "Campus Avenue & Flame Trees", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/38450dd67_WhatsAppImage2026-05-23at2012206.jpg", caption: "University of Abuja Sports Stadium", category: "University of Abuja" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/71f0078aa_WhatsAppImage2026-05-23at2012207.jpg", caption: "Convocation Procession — UniAbuja", category: "University of Abuja" },
   // Abuja City
-  { src: "https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=800&q=80", caption: "Aso Rock — Abuja's Iconic Landmark", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80", caption: "Nigerian National Mosque, Abuja", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80", caption: "Millennium Tower & Cultural Centre", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80", caption: "Abuja Central Business District", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", caption: "Zuma Rock — 700m Monolith", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1542401886-65d6c61db217?w=800&q=80", caption: "Sunset over FCT", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80", caption: "Wuse Market — Cultural Hub", category: "Abuja City" },
-  { src: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=800&q=80", caption: "Abuja City Park & Recreation", category: "Abuja City" },
+  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/fee050250_WhatsAppImage2026-05-23at2012212.jpg", caption: "Zuma Rock — 700m Monolith, Abuja", category: "Abuja City" },
 ];
 
 export default function Gallery() {
@@ -35,7 +33,7 @@ export default function Gallery() {
       {/* Hero */}
       <section className="relative py-20 md:py-28 bg-primary text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?w=1600&q=80" alt="" className="w-full h-full object-cover" />
+          <img src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/72cb8d68d_WhatsAppImage2026-05-23at2012208.jpg" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10">
           <SectionHeading
