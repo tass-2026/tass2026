@@ -119,9 +119,24 @@ export default function About() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
             {[
-              { icon: FlaskConical, label: "Partnership Institutions", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700", items: ["To Be Announced"] },
-              { icon: Building2, label: "Partnership Industry", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700", items: ["To Be Announced"] },
-              { icon: Landmark, label: "Partnership Government Body", bg: "bg-orange-50", iconBg: "bg-orange-100", iconColor: "text-orange-700", items: ["To Be Announced"] },
+              {
+                icon: FlaskConical, label: "Partnership Institutions", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700",
+                logos: [
+                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e325559fb_1000509502.png", name: "21st Century Open University" },
+                ]
+              },
+              {
+                icon: Building2, label: "Partnership Industry", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700",
+                logos: [
+                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/ef8dff6b3_WhatsAppImage2026-06-22at134547.jpg", name: "ResTV — Research Television" },
+                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/910c524b8_WhatsAppImage2026-06-22at1345471.jpeg", name: "CEFPACS Consulting Limited" },
+                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/bf76fdfe6_WhatsAppImage2026-06-22at1345472.jpeg", name: "TripWinga" },
+                ]
+              },
+              {
+                icon: Landmark, label: "Partnership Government Body", bg: "bg-orange-50", iconBg: "bg-orange-100", iconColor: "text-orange-700",
+                logos: []
+              },
             ].map((partner, i) => (
               <motion.div
                 key={partner.label}
@@ -135,14 +150,15 @@ export default function About() {
                   <partner.icon className={`w-5 h-5 ${partner.iconColor}`} />
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-4">{partner.label}</h3>
-                <ul className="space-y-2">
-                  {partner.items.map((item) => (
-                    <li key={item} className="text-sm text-muted-foreground flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                {partner.logos.length > 0 ? (
+                  <div className="flex flex-wrap gap-4 items-center">
+                    {partner.logos.map((logo) => (
+                      <img key={logo.name} src={logo.src} alt={logo.name} title={logo.name} className="h-16 w-auto object-contain rounded-md" />
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground italic">To Be Announced</p>
+                )}
               </motion.div>
             ))}
           </div>
