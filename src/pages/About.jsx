@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
-import { Globe, Award, Lightbulb, Users, BookOpen, Handshake } from "lucide-react";
+import { Globe, Award, Lightbulb, Users, BookOpen, Handshake, Mic2, Building2, FlaskConical, Landmark } from "lucide-react";
 
 const SCHOLARS_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/c5692d51c_generated_0a16fbea.png";
 
@@ -67,6 +67,82 @@ export default function About() {
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-2">{f.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Keynote Speakers & Special Guest */}
+      <section className="py-20 md:py-32 bg-muted/50">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <SectionHeading
+            label="Featured Speakers"
+            title="Keynote Speakers & Special Guest of Honour"
+            description="TASS Nigeria 2026 will feature distinguished academics, policymakers, and industry leaders as keynote speakers. Further details will be announced soon."
+            align="center"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+            {[
+              { role: "Special Guest of Honour", name: "To Be Announced", note: "A distinguished personality of national significance.", icon: Award, bg: "bg-yellow-50", iconBg: "bg-yellow-100", iconColor: "text-yellow-700" },
+              { role: "Keynote Speaker I", name: "To Be Announced", note: "International academic leader in science & technology.", icon: Mic2, bg: "bg-green-50", iconBg: "bg-green-100", iconColor: "text-green-700" },
+              { role: "Keynote Speaker II", name: "To Be Announced", note: "Renowned voice in social sciences & policy.", icon: Mic2, bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
+            ].map((speaker, i) => (
+              <motion.div
+                key={speaker.role}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className={`rounded-2xl border border-border p-6 md:p-8 hover:shadow-lg transition-all duration-300 ${speaker.bg}`}
+              >
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${speaker.iconBg}`}>
+                  <speaker.icon className={`w-5 h-5 ${speaker.iconColor}`} />
+                </div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">{speaker.role}</p>
+                <h3 className="font-heading font-bold text-lg mb-2">{speaker.name}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{speaker.note}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="py-20 md:py-32">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <SectionHeading
+            label="Partners"
+            title="Our Partners"
+            description="TASS Nigeria 2026 is strengthened by partnerships across academia, industry, and government."
+            align="center"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+            {[
+              { icon: FlaskConical, label: "Partnership Institutions", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700", items: ["To Be Announced"] },
+              { icon: Building2, label: "Partnership Industry", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700", items: ["To Be Announced"] },
+              { icon: Landmark, label: "Partnership Government Body", bg: "bg-orange-50", iconBg: "bg-orange-100", iconColor: "text-orange-700", items: ["To Be Announced"] },
+            ].map((partner, i) => (
+              <motion.div
+                key={partner.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className={`rounded-2xl border border-border p-6 md:p-8 hover:shadow-lg transition-all duration-300 ${partner.bg}`}
+              >
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${partner.iconBg}`}>
+                  <partner.icon className={`w-5 h-5 ${partner.iconColor}`} />
+                </div>
+                <h3 className="font-heading font-bold text-lg mb-4">{partner.label}</h3>
+                <ul className="space-y-2">
+                  {partner.items.map((item) => (
+                    <li key={item} className="text-sm text-muted-foreground flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
