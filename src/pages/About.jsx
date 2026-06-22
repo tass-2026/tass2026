@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
-import { Globe, Award, Lightbulb, Users, BookOpen, Handshake, Mic2, Building2, FlaskConical, Landmark } from "lucide-react";
+import { Globe, Award, Lightbulb, Users, BookOpen, Handshake, Mic2, Building2, FlaskConical, Landmark, ChevronDown } from "lucide-react";
 
 const SCHOLARS_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/c5692d51c_generated_0a16fbea.png";
 
@@ -13,6 +13,78 @@ const features = [
   { icon: BookOpen, title: "Cross-Disciplinary", desc: "Sessions structured to foster interaction between technical research, social inquiry, and ethical reflection.", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700" },
   { icon: Handshake, title: "Industry Partnerships", desc: "Creating a dynamic environment for knowledge exchange between academia and industry.", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700" },
 ];
+
+const partners = [
+  {
+    icon: FlaskConical, label: "Partnership Institutions", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700",
+    logos: [
+      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e325559fb_1000509502.png", name: "21st Century Open University" },
+    ]
+  },
+  {
+    icon: Building2, label: "Partnership Industry", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700",
+    logos: [
+      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/ef8dff6b3_WhatsAppImage2026-06-22at134547.jpg", name: "ResTV — Research Television" },
+      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/910c524b8_WhatsAppImage2026-06-22at1345471.jpeg", name: "CEFPACS Consulting Limited" },
+      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/bf76fdfe6_WhatsAppImage2026-06-22at1345472.jpeg", name: "TripWinga" },
+    ]
+  },
+  {
+    icon: Landmark, label: "Partnership Government Body", bg: "bg-orange-50", iconBg: "bg-orange-100", iconColor: "text-orange-700",
+    logos: []
+  },
+];
+
+function PartnerAccordion() {
+  const [openIndex, setOpenIndex] = useState(null);
+  return (
+    <div className="mt-6 space-y-4 max-w-3xl mx-auto">
+      {partners.map((partner, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <motion.div
+            key={partner.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
+            className={`rounded-2xl border border-border overflow-hidden ${partner.bg}`}
+          >
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className="w-full flex items-center justify-between px-6 py-5 text-left"
+            >
+              <div className="flex items-center gap-4">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${partner.iconBg}`}>
+                  <partner.icon className={`w-5 h-5 ${partner.iconColor}`} />
+                </div>
+                <span className="font-heading font-bold text-base">{partner.label}</span>
+                <span className="text-xs text-muted-foreground">({partner.logos.length} partner{partner.logos.length !== 1 ? "s" : ""})</span>
+              </div>
+              <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+            {isOpen && (
+              <div className="px-6 pb-6">
+                {partner.logos.length > 0 ? (
+                  <div className="flex flex-wrap gap-6">
+                    {partner.logos.map((logo) => (
+                      <div key={logo.name} className="flex flex-col items-center gap-2 w-28">
+                        <img src={logo.src} alt={logo.name} className="h-16 w-full object-contain rounded-md" />
+                        <p className="text-xs text-center text-muted-foreground font-medium leading-snug">{logo.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground italic">To Be Announced</p>
+                )}
+              </div>
+            )}
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function About() {
   return (
@@ -117,51 +189,7 @@ export default function About() {
             description="TASS Nigeria 2026 is strengthened by partnerships across academia, industry, and government."
             align="center"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
-            {[
-              {
-                icon: FlaskConical, label: "Partnership Institutions", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700",
-                logos: [
-                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e325559fb_1000509502.png", name: "21st Century Open University" },
-                ]
-              },
-              {
-                icon: Building2, label: "Partnership Industry", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700",
-                logos: [
-                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/ef8dff6b3_WhatsAppImage2026-06-22at134547.jpg", name: "ResTV — Research Television" },
-                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/910c524b8_WhatsAppImage2026-06-22at1345471.jpeg", name: "CEFPACS Consulting Limited" },
-                  { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/bf76fdfe6_WhatsAppImage2026-06-22at1345472.jpeg", name: "TripWinga" },
-                ]
-              },
-              {
-                icon: Landmark, label: "Partnership Government Body", bg: "bg-orange-50", iconBg: "bg-orange-100", iconColor: "text-orange-700",
-                logos: []
-              },
-            ].map((partner, i) => (
-              <motion.div
-                key={partner.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className={`rounded-2xl border border-border p-6 md:p-8 hover:shadow-lg transition-all duration-300 ${partner.bg}`}
-              >
-                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${partner.iconBg}`}>
-                  <partner.icon className={`w-5 h-5 ${partner.iconColor}`} />
-                </div>
-                <h3 className="font-heading font-bold text-lg mb-4">{partner.label}</h3>
-                {partner.logos.length > 0 ? (
-                  <div className="flex flex-wrap gap-4 items-center">
-                    {partner.logos.map((logo) => (
-                      <img key={logo.name} src={logo.src} alt={logo.name} title={logo.name} className="h-16 w-auto object-contain rounded-md" />
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-sm text-muted-foreground italic">To Be Announced</p>
-                )}
-              </motion.div>
-            ))}
-          </div>
+          <PartnerAccordion />
         </div>
       </section>
 
