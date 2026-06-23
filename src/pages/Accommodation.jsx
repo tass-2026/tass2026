@@ -7,7 +7,7 @@ const hotels = [
   {
     name: "Transcorp Hilton Abuja",
     stars: 5,
-    distance: "15 km from venue",
+    distance: "~22 km from University of Abuja",
     price: "From ₦85,000/night",
     phone: "+234 9 461 3000",
     website: "hilton.com",
@@ -20,7 +20,7 @@ const hotels = [
   {
     name: "Sheraton Abuja Hotel",
     stars: 5,
-    distance: "12 km from venue",
+    distance: "~18 km from University of Abuja",
     price: "From ₦75,000/night",
     phone: "+234 9 870 1000",
     website: "marriott.com",
@@ -32,7 +32,7 @@ const hotels = [
   {
     name: "Nicon Luxury Hotel",
     stars: 4,
-    distance: "10 km from venue",
+    distance: "~15 km from University of Abuja",
     price: "From ₦55,000/night",
     phone: "+234 9 461 4000",
     website: "niconluxury.com",
@@ -44,7 +44,7 @@ const hotels = [
   {
     name: "University of Abuja Guest House",
     stars: 3,
-    distance: "On Campus",
+    distance: "On Campus — University of Abuja",
     price: "From ₦18,000/night",
     phone: "+234 9 876 5432",
     website: "uniabuja.edu.ng",
@@ -57,7 +57,7 @@ const hotels = [
   {
     name: "Hawthorn Suites by Wyndham",
     stars: 4,
-    distance: "18 km from venue",
+    distance: "~25 km from University of Abuja",
     price: "From ₦48,000/night",
     phone: "+234 9 290 5000",
     website: "wyndhamhotels.com",
@@ -69,7 +69,7 @@ const hotels = [
   {
     name: "Abuja Continental Hotel",
     stars: 4,
-    distance: "8 km from venue",
+    distance: "~8 km from University of Abuja",
     price: "From ₦42,000/night",
     phone: "+234 9 461 5000",
     website: "abujacontinenal.com",
