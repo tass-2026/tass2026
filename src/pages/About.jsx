@@ -157,8 +157,8 @@ export default function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
             {[
               { role: "Special Guest of Honour", name: "To Be Announced", note: "A distinguished personality of national significance.", icon: Award, bg: "bg-yellow-50", iconBg: "bg-yellow-100", iconColor: "text-yellow-700" },
-              { role: "Keynote Speaker I", name: "To Be Announced", note: "International academic leader in science & technology.", icon: Mic2, bg: "bg-green-50", iconBg: "bg-green-100", iconColor: "text-green-700" },
-              { role: "Keynote Speaker II", name: "To Be Announced", note: "Renowned voice in social sciences & policy.", icon: Mic2, bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
+              { role: "Keynote Speaker I", name: "Prof. Feryel Ouerghi Sebai", note: "Former Minister of Economy & Planning | Senior Economist | Expert in African Development & Economic Strategy Leader, Tunis, Tunisia.", icon: Mic2, bg: "bg-green-50", iconBg: "bg-green-100", iconColor: "text-green-700" },
+              { role: "Keynote Speaker II", name: "Prof. Steven Timipa Odi-Owei", note: "Emeritus Professor of Mechanical Engineering & Former Vice-Chancellor, Rivers State University | Pro-Chancellor/Chairman of Council, Niger Delta University, Amasoma, Bayelsa State.", icon: Mic2, bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
             ].map((speaker, i) => (
               <motion.div
                 key={speaker.role}
