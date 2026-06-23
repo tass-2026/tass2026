@@ -37,7 +37,7 @@ export default function Contact() {
                 <h3 className="font-heading font-bold text-lg mb-4">Conference Secretariat</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   TASS Nigeria 2026<br />
-                  Centre for Migration Research & Interdisciplinary Studies (CEMRI)<br />
+                  Centre for Multidisciplinary Research and Innovation (CEMRI)<br />
                   University of Abuja
                 </p>
               </div>
