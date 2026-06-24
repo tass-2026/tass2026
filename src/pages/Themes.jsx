@@ -13,6 +13,7 @@ const categories = [
       { icon: Cpu, title: "Computer Science, AI & Data Analytics" },
       { icon: Leaf, title: "Agriculture, Food Security & Nutrition" },
       { icon: Heart, title: "Health Sciences & Public Health" },
+      { icon: Lightbulb, title: "Oil and Gas Innovation" },
     ]
   },
   {

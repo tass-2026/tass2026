@@ -77,9 +77,17 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* CMT Acknowledgement */}
+        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/40 mb-2">CMT Acknowledgment</h4>
+          <p className="text-xs text-primary-foreground/40 leading-relaxed max-w-3xl">
+            The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.
+          </p>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-primary-foreground/40">
-            © 2026 TASS Nigeria 2026 · Centre for Migration Research & Interdisciplinary Studies · University of Abuja
+            &trade; TASS NIGERIA 2026. All Rights Reserved.
           </p>
           <p className="text-xs text-primary-foreground/40">
             09–12 November 2026, Abuja, Nigeria

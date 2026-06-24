@@ -97,7 +97,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <SectionHeading
-                label="About TASS Nigeria 2026"
+                label={<><span className="text-green-600">TASS NIG</span><span className="text-red-600">ERIA 2026</span></>}
                 title="Technology. Arts. Science. Society."
                 description="TASS — Technology, Arts, Science, and Society — is an international multidisciplinary platform established to promote excellence in research, innovation, entrepreneurship, knowledge exchange, and sustainable development."
               />
@@ -158,7 +158,7 @@ export default function About() {
             {[
               { role: "Special Guest of Honour", name: "To Be Announced", note: "A distinguished personality of national significance.", icon: Award, bg: "bg-yellow-50", iconBg: "bg-yellow-100", iconColor: "text-yellow-700" },
               { role: "Keynote Speaker I", name: "Prof. Feryel Ouerghi Sebai", note: "Former Minister of Economy & Planning | Senior Economist | Expert in African Development & Economic Strategy Leader, Tunis, Tunisia.", icon: Mic2, bg: "bg-green-50", iconBg: "bg-green-100", iconColor: "text-green-700" },
-              { role: "Keynote Speaker II", name: "Prof. Steven Timipa Odi-Owei", note: "Emeritus Professor of Mechanical Engineering & Former Vice-Chancellor, Rivers State University | Pro-Chancellor/Chairman of Council, Niger Delta University, Amasoma, Bayelsa State.", icon: Mic2, bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
+              { role: "Keynote Speaker II", name: "Prof. Steven Timipa Odi-Owei", note: "Emeritus Professor of Mechanical Engineering & Former Vice-Chancellor, Rivers State University | Pro-Chancellor/Chairman of Council, Niger Delta University, Amasoma, Bayelsa State, Nigeria.", icon: Mic2, bg: "bg-blue-50", iconBg: "bg-blue-100", iconColor: "text-blue-700" },
             ].map((speaker, i) => (
               <motion.div
                 key={speaker.role}

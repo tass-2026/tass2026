@@ -38,11 +38,21 @@ export default function Navbar() {
           <div className="hidden lg:flex flex-col h-16 justify-center">
             {/* Row 1: logo left, links center, register right */}
             <div className="flex items-center justify-between h-16">
-              <Link to="/" className="flex items-center">
+              <Link to="/" className="flex items-center gap-3">
+                <img
+                  src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e325559fb_1000509502.png"
+                  alt="University of Abuja"
+                  className="h-10 w-auto object-contain"
+                />
                 <img
                   src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/14974f33a_logo_200x64.jpeg"
                   alt="TASS Nigeria 2026"
                   className="h-12 w-auto object-contain"
+                />
+                <img
+                  src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/910c524b8_WhatsAppImage2026-06-22at1345471.jpeg"
+                  alt="CEMRI"
+                  className="h-10 w-auto object-contain rounded"
                 />
               </Link>
               <div className="flex items-center gap-5">
@@ -70,11 +80,21 @@ export default function Navbar() {
 
           {/* Mobile: single row */}
           <div className="flex lg:hidden items-center justify-between h-16">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e325559fb_1000509502.png"
+                alt="University of Abuja"
+                className="h-8 w-auto object-contain"
+              />
               <img
                 src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/14974f33a_logo_200x64.jpeg"
                 alt="TASS Nigeria 2026"
                 className="h-10 w-auto object-contain"
+              />
+              <img
+                src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/910c524b8_WhatsAppImage2026-06-22at1345471.jpeg"
+                alt="CEMRI"
+                className="h-8 w-auto object-contain rounded"
               />
             </Link>
             <button
