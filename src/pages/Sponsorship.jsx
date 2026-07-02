@@ -104,29 +104,27 @@ export default function Sponsorship() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className={`rounded-2xl p-6 border flex flex-col ${
-                  tier.featured
-                    ? "bg-accent text-accent-foreground border-accent shadow-xl ring-2 ring-accent/20"
-                    : "bg-card border-border"
+                className={`rounded-2xl p-6 border flex flex-col shadow-xl text-white ${
+                  tier.name === "Bronze" ? "bg-amber-600 border-amber-600" :
+                  tier.name === "Silver" ? "bg-slate-500 border-slate-500" :
+                  tier.name === "Gold" ? "bg-amber-400 text-amber-900 border-amber-400 ring-2 ring-amber-300/40" :
+                  tier.name === "Platinum" ? "bg-sky-600 border-sky-600" :
+                  "bg-emerald-600 border-emerald-600"
                 }`}
               >
                 <h3 className="font-heading font-bold text-lg mb-1">{tier.name}</h3>
                 <p className="font-display font-extrabold text-2xl mb-5">{tier.price}</p>
                 <ul className="space-y-2 flex-1">
                   {tier.features.map((f) => (
-                    <li key={f} className={`text-xs flex items-start gap-2 ${tier.featured ? "text-accent-foreground/80" : "text-muted-foreground"}`}>
-                      <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${tier.featured ? "text-accent-foreground" : "text-accent"}`} />
+                    <li key={f} className="text-xs flex items-start gap-2 text-white/80">
+                      <Check className="w-3.5 h-3.5 mt-0.5 shrink-0 text-white/60" />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <Link
                   to="/contact"
-                  className={`mt-6 inline-flex items-center justify-center gap-2 px-4 py-2.5 font-semibold rounded-full text-sm transition-all ${
-                    tier.featured
-                      ? "bg-accent-foreground text-accent hover:bg-accent-foreground/90"
-                      : "bg-accent text-accent-foreground hover:bg-accent/90"
-                  }`}
+                  className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2.5 font-semibold rounded-full text-sm transition-all bg-white/20 text-white hover:bg-white/30"
                 >
                   Enquire
                 </Link>

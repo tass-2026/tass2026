@@ -11,23 +11,11 @@ const hotels = [
     price: "From ₦85,000/night",
     phone: "+234 9 461 3000",
     website: "hilton.com",
-    img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Transcorp_Hilton%2C_Abuja.jpg",
     amenities: ["Free WiFi", "Pool", "Gym", "Restaurant", "Parking"],
     desc: "Abuja's flagship luxury hotel with world-class facilities and panoramic city views.",
     location: "Plot 1096, Aguiyi Ironsi Street, Maitama",
     featured: true,
-  },
-  {
-    name: "Sheraton Abuja Hotel",
-    stars: 5,
-    distance: "~18 km from University of Abuja",
-    price: "From ₦75,000/night",
-    phone: "+234 9 870 1000",
-    website: "marriott.com",
-    img: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
-    amenities: ["Free WiFi", "Pool", "Spa", "Business Center", "Parking"],
-    desc: "Elegant 5-star property in the heart of Abuja with exceptional conference facilities.",
-    location: "Ladi Kwali Way, Central Business District",
   },
   {
     name: "Nicon Luxury Hotel",
@@ -36,23 +24,22 @@ const hotels = [
     price: "From ₦55,000/night",
     phone: "+234 9 461 4000",
     website: "niconluxury.com",
-    img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80",
+    img: "https://niconluxury.com/yardThree.jpg",
     amenities: ["Free WiFi", "Restaurant", "Bar", "Business Center"],
     desc: "Stylish 4-star hotel centrally located with easy access to major attractions.",
     location: "Plot 903, Tafawa Balewa Way, Central Business District",
   },
   {
-    name: "University of Abuja Guest House",
+    name: "ASUU Charlet",
     stars: 3,
-    distance: "On Campus — University of Abuja",
+    distance: "~20 km from University of Abuja",
     price: "From ₦18,000/night",
     phone: "+234 9 876 5432",
     website: "uniabuja.edu.ng",
     img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
     amenities: ["Free WiFi", "Restaurant", "Parking", "Security"],
-    desc: "Comfortable on-campus accommodation — ideal for delegates wanting to be close to the conference venue.",
-    location: "University of Abuja Main Campus, FCT",
-    featured: true,
+    desc: "Comfortable accommodation option near the University of Abuja.",
+    location: "University of Abuja, FCT",
   },
   {
     name: "Hawthorn Suites by Wyndham",
@@ -61,7 +48,7 @@ const hotels = [
     price: "From ₦48,000/night",
     phone: "+234 9 290 5000",
     website: "wyndhamhotels.com",
-    img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80",
+    img: "https://www.wyndhamhotels.com/content/dam/property-images/en-us/bh/ng/others/abuja/31741/31741_exterior_view_2.jpg?crop=3000:2000;*,*&downsize=1800:*",
     amenities: ["Free WiFi", "Pool", "Gym", "Breakfast Included"],
     desc: "Extended-stay suites perfect for delegates attending the full 4-day conference.",
     location: "Plot 861, Cadastral Zone, Wuse II",
@@ -73,10 +60,23 @@ const hotels = [
     price: "From ₦42,000/night",
     phone: "+234 9 461 5000",
     website: "abujacontinenal.com",
-    img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
+    img: "https://image-tc.galaxy.tf/wijpeg-c2uhscjmido2fwifh5l3a1jse/aerial-view.jpg?width=1920",
     amenities: ["Free WiFi", "Restaurant", "Conference Rooms", "Parking"],
     desc: "Modern hotel offering great value with proximity to the University of Abuja.",
-    location: "Airport Road, Lugbe, FCT",
+    location: "Ladi Kwali Way, Central Business District",
+  },
+  {
+    name: "Divine Love (DDL) Retreat and Conference Centre",
+    stars: 3,
+    distance: "~20 km from University of Abuja",
+    price: "₦18,000 - ₦35,000/night",
+    phone: "+234 9 876 5000",
+    website: "dracc.org",
+    img: "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHJYtaNGoiZKLnQ-H3x3BvLIe0zac_nmD2Ss8HSFM69h_eAzT2CDN-SV8mwY2pxqa8oH9RALwKzoWpniR8ycz5VV9gfLlcHWzHb4OqQZR87gACmL7_KaQWCIr9Od-WwXjqE_AxpPg=s680-w680-h510",
+    amenities: ["Free WiFi", "Restaurant", "Parking", "Security"],
+    desc: "Daughters of Divine Love Retreat and Conference Centre — a quiet, budget-friendly option for delegates.",
+    location: "Aco Estate, Lugbe, Abuja, Nigeria",
+    featured: true,
   },
 ];
 
@@ -170,7 +170,7 @@ export default function Accommodation() {
 
           <div className="mt-12 p-6 bg-yellow-50 border border-yellow-200 rounded-2xl text-center">
             <p className="text-sm text-yellow-800 font-medium">
-              📌 Mention <strong>"TASS Nigeria 2026"</strong> when booking to access any negotiated delegate rates. Early booking is strongly advised as the conference period is busy season in Abuja.
+              📌 Contact the LOC members for booking. Early booking is strongly advised as the conference period is busy season in Abuja.
             </p>
           </div>
         </div>

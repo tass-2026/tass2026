@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, MapPin, Phone } from "lucide-react";
+import { Calendar, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import CountdownTimer from "@/components/home/CountdownTimer";
 
-const HERO_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/b3bb7586e_generated_03931515.png";
+const HERO_IMG = "/hero-bg.jpg";
 
 export default function HeroSection() {
+  const bgRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (bgRef.current) {
+        const offset = window.scrollY * 0.4;
+        bgRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.1)`;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-end overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img src={HERO_IMG} alt="University of Abuja campus" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/20" />
+      <div className="absolute inset-0" ref={bgRef} style={{ transform: "scale(1.1)" }}>
+        <img src={HERO_IMG} alt="University of Abuja campus" className="w-full h-full object-cover" loading="eager" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/20" />
       </div>
 
-      {/* Decorative lines */}
       <div className="absolute top-0 left-[8%] w-px h-full bg-white/5" />
       <div className="absolute top-0 left-[25%] w-px h-full bg-white/5" />
       <div className="absolute top-0 right-[15%] w-px h-full bg-white/5" />
@@ -28,16 +40,16 @@ export default function HeroSection() {
               transition={{ duration: 0.8 }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block w-8 h-px bg-yellow-400" />
+                <span className="inline-block w-8 h-px bg-gold" />
                 <span className="text-xs font-semibold uppercase tracking-[0.2em]">
                   <span className="text-green-400">TASS NIG</span><span className="text-red-400">ERIA 2026</span>
                 </span>
               </div>
 
-              <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.95] tracking-tight mb-6">
+              <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[0.95] tracking-tight mb-6">
                 <span className="text-green-400">Technology.</span>
                 <br />
-                <span className="text-yellow-400">Arts.</span> Science.
+                <span className="text-gold">Arts.</span> Science.
                 <br />
                 <span className="text-orange-400">Society.</span>
               </h1>
@@ -56,16 +68,18 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Key Contacts */}
+              <CountdownTimer />
+
               <div className="mb-8 space-y-1.5">
                 {[
-                  { name: "Dr. Duabari Silas Aziaka", role: "IOC Chairman", phone: "+447856261406" },
+                  { name: "Engr. (Dr) Duabari Silas Aziaka", role: "IOC Chairman", phone: "+447442568824" },
                   { name: "Prof. Patricia Taiwo", role: "LOC Chairperson", phone: "+2348034820646" },
                   { name: "Dr. Lekpa Kingdom David", role: "CEMRI President", phone: "+2348035607640" },
+                  { name: "Dr (Mrs) Joy Okwuguori", role: "LOC Secretary", phone: "+2347063891945" },
                 ].map((c) => (
                   <div key={c.phone} className="flex items-center gap-2 text-xs text-white/60">
                     <Phone className="w-3 h-3 shrink-0" />
-                    <a href={`tel:${c.phone}`} className="hover:text-accent transition-colors">{c.phone}</a>
+                    <a href={`tel:${c.phone}`} className="hover:text-gold transition-colors">{c.phone}</a>
                     <span className="text-white/30">·</span>
                     <span>{c.name}</span>
                     <span className="text-white/30">·</span>
@@ -76,14 +90,9 @@ export default function HeroSection() {
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/register"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all text-sm"
-                >
-                  Register Now <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
                   to="/themes"
                   className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition-all text-sm"
+                  aria-label="Submit Abstract"
                 >
                   Submit Abstract
                 </Link>
@@ -97,7 +106,7 @@ export default function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="lg:col-span-4 hidden lg:block"
           >
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10" role="complementary" aria-label="Key Highlights">
               <h3 className="text-white font-heading font-semibold text-sm mb-4">Key Highlights</h3>
               <div className="space-y-3">
                 {[
@@ -107,7 +116,7 @@ export default function HeroSection() {
                   { val: "5", label: "Sponsorship Tiers" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-baseline gap-3">
-                    <span className="text-accent font-display font-extrabold text-2xl">{item.val}</span>
+                    <span className="text-gold font-display font-extrabold text-2xl">{item.val}</span>
                     <span className="text-white/50 text-sm">{item.label}</span>
                   </div>
                 ))}

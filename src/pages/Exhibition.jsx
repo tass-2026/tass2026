@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
-import { Building, Star, Zap, ArrowRight } from "lucide-react";
+import { Star, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const EXHIBIT_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/fab8c8aab_generated_413c7661.png";
+const EXHIBIT_IMG = "/exhibition-bg.jpg";
 
 const boothTiers = [
   { name: "Standard Booth", size: "3m × 3m", price: "₦500,000", features: ["Table & 2 chairs", "Power outlet", "Basic signage", "Exhibitor passes (2)"] },
@@ -51,22 +51,22 @@ export default function Exhibition() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`rounded-2xl p-6 md:p-8 border ${
-                  i === 1
-                    ? "bg-accent text-accent-foreground border-accent shadow-xl ring-2 ring-accent/20"
-                    : "bg-card border-border"
+                className={`rounded-2xl p-6 md:p-8 border shadow-xl ${
+                  i === 0 ? "bg-amber-500 text-white border-amber-500" :
+                  i === 1 ? "bg-sky-500 text-white border-sky-500 ring-2 ring-sky-300/40" :
+                  "bg-emerald-500 text-white border-emerald-500"
                 }`}
               >
                 <div className="flex items-center gap-2 mb-1">
                   {i === 1 && <Star className="w-4 h-4" />}
                   <h3 className="font-heading font-bold text-lg">{tier.name}</h3>
                 </div>
-                <p className={`text-sm mb-4 ${i === 1 ? "text-accent-foreground/70" : "text-muted-foreground"}`}>{tier.size}</p>
+                <p className="text-sm mb-4 text-white/70">{tier.size}</p>
                 <p className="font-display font-extrabold text-3xl mb-6">{tier.price}</p>
                 <ul className="space-y-2">
                   {tier.features.map((f) => (
-                    <li key={f} className={`text-sm flex items-center gap-2 ${i === 1 ? "text-accent-foreground/80" : "text-muted-foreground"}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${i === 1 ? "bg-accent-foreground/50" : "bg-accent"}`} />
+                    <li key={f} className="text-sm flex items-center gap-2 text-white/80">
+                      <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-white/50" />
                       {f}
                     </li>
                   ))}

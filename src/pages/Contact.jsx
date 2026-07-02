@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
 import { Mail, Phone, MapPin, Send, Globe } from "lucide-react";
@@ -9,10 +9,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 export default function Contact() {
   const [submitted, setSubmitted] = React.useState(false);
+  const formRef = React.useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    const data = new FormData(e.target);
+    try {
+      const res = await fetch(e.target.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      if (res.ok) setSubmitted(true);
+    } catch {}
   };
 
   return (
@@ -45,8 +50,10 @@ export default function Contact() {
               <div className="space-y-4">
                 {[
                   { icon: MapPin, label: "University of Abuja, FCT, Nigeria" },
-                  { icon: Mail, label: "tass2026@uniabuja.edu.ng", href: "mailto:tass2026@uniabuja.edu.ng" },
-                  { icon: Phone, label: "+234 (0) 800 TASS 2026", href: "tel:+2348008277026" },
+                  { icon: Mail, label: "uniabujacemriinquiries@cemri.org", href: "mailto:uniabujacemriinquiries@cemri.org" },
+                  { icon: Mail, label: "uniabujacemrisponsorship@cemri.org", href: "mailto:uniabujacemrisponsorship@cemri.org" },
+                  { icon: Mail, label: "uniabujacemrihackathon@cemri.org", href: "mailto:uniabujacemrihackathon@cemri.org" },
+                  { icon: Mail, label: "uniabujacemriabstract@cemri.org", href: "mailto:uniabujacemriabstract@cemri.org" },
                   { icon: Globe, label: "tass2026.uniabuja.edu.ng", href: "https://tass2026.uniabuja.edu.ng" },
                   { icon: Globe, label: "cemri.org (CEMRI Website)", href: "https://www.cemri.org" },
                 ].map((item) => (
@@ -68,9 +75,10 @@ export default function Contact() {
                 <h3 className="font-heading font-bold text-lg mb-4">Key Contacts</h3>
                 <div className="space-y-4">
                   {[
-                    { name: "Dr. Duabari Silas Aziaka", role: "IOC Chairman", phone: "+44 7856 261406" },
-                    { name: "Prof. Patricia Taiwo", role: "LOC Chairperson", phone: "+234 803 482 0646" },
+                    { name: "Engr. (Dr) Duabari Silas Aziaka", role: "IOC Chairman", phone: "+44 7442 568824" },
+                    { name: "Prof. Patricia Awa Taiwo", role: "LOC Chairperson", phone: "+234 803 482 0646" },
                     { name: "Dr. Lekpa Kingdom David", role: "CEMRI President", phone: "+234 803 560 7640" },
+                    { name: "Dr (Mrs) Joy Okwuguori", role: "LOC Secretary", phone: "+234 706 389 1945" },
                   ].map((contact) => (
                     <div key={contact.name} className="flex items-start gap-3">
                       <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
@@ -102,25 +110,26 @@ export default function Contact() {
                   <p className="text-sm text-muted-foreground">Thank you for your interest. The conference secretariat will respond within 48 hours.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-5">
+                <form ref={formRef} action="https://formspree.io/f/mwvdrgwl" method="POST" onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-5">
+                  <input type="hidden" name="_to" value="tass2026@uniabuja.edu.ng" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-sm font-medium mb-1.5 block">Full Name</label>
-                      <Input placeholder="Your full name" required />
+                      <Input name="name" placeholder="Your full name" required />
                     </div>
                     <div>
                       <label className="text-sm font-medium mb-1.5 block">Email</label>
-                      <Input type="email" placeholder="you@example.com" required />
+                      <Input name="_replyto" type="email" placeholder="you@example.com" required />
                     </div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium mb-1.5 block">Institution / Organization</label>
-                      <Input placeholder="Your institution" />
+                      <label className="text-sm font-medium mb-1.5 block">Institution / Organisation</label>
+                      <Input name="institution" placeholder="Your institution" />
                     </div>
                     <div>
                       <label className="text-sm font-medium mb-1.5 block">Enquiry Type</label>
-                      <Select>
+                      <Select name="enquiry_type">
                         <SelectTrigger>
                           <SelectValue placeholder="Select type" />
                         </SelectTrigger>
@@ -137,7 +146,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-1.5 block">Message</label>
-                    <Textarea placeholder="Tell us how we can help..." rows={5} required />
+                    <Textarea name="message" placeholder="Tell us how we can help..." rows={5} required />
                   </div>
                   <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full h-12 font-semibold">
                     <Send className="w-4 h-4 mr-2" /> Send Message

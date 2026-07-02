@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/lib/ThemeProvider";
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -12,6 +13,7 @@ const navLinks = [
   { label: "Sponsorship", href: "/sponsorship" },
   { label: "Accommodation", href: "/accommodation" },
   { label: "Gallery", href: "/gallery" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -19,10 +21,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { dark, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -30,82 +33,67 @@ export default function Navbar() {
 
   return (
     <>
+      <div className="fixed top-3 right-3 md:right-6 z-[60]">
+        <img src="/logo-CEMRI.jpg" alt="CEMRI" className="h-10 md:h-12 w-auto object-contain drop-shadow-lg" loading="lazy" />
+      </div>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? "bg-background/90 backdrop-blur-xl shadow-sm" : "bg-transparent"
-      }`}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-          {/* Desktop: two rows */}
+      }`} role="navigation" aria-label="Main navigation">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 pr-14 md:pr-20">
           <div className="hidden lg:flex flex-col h-16 justify-center">
-            {/* Row 1: logo left, links center, register right */}
             <div className="flex items-center justify-between h-16">
-              <Link to="/" className="flex items-center gap-3">
-                <img
-                  src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/5caa39d92_WhatsAppImage2026-05-29at231537.jpg"
-                  alt="University of Abuja"
-                  className="h-10 w-auto object-contain"
-                />
-                <img
-                  src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/14974f33a_logo_200x64.jpeg"
-                  alt="TASS Nigeria 2026"
-                  className="h-12 w-auto object-contain"
-                />
+              <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Home">
+                <img src="/logo-uniabuja.png" alt="University of Abuja" className="h-10 w-auto object-contain" loading="lazy" />
+                <span className="hidden xl:block font-heading font-bold text-base text-foreground">TASS Nigeria 2026</span>
               </Link>
               <div className="flex items-center gap-5">
                 {navLinks.map((l) => (
                   <Link
                     key={l.href}
                     to={l.href}
-                    className={`text-sm font-medium transition-colors hover:text-accent ${
+                    className={`text-sm font-medium transition-colors hover:text-accent whitespace-nowrap focus-visible:outline-none focus-visible:text-accent ${
                       location.pathname === l.href ? "text-accent" : "text-muted-foreground"
                     }`}
+                    aria-current={location.pathname === l.href ? "page" : undefined}
                   >
                     {l.label}
                   </Link>
                 ))}
               </div>
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/fb3b51eb6_cemrilogo.png"
-                  alt="CEMRI"
-                  className="h-10 w-auto object-contain"
-                />
-                <Link
-                  to="/register"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white text-sm font-semibold rounded-full hover:bg-green-700 transition-all"
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={toggle}
+                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-foreground"
+                  aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
                 >
-                  Register Now <ArrowRight className="w-4 h-4" />
-                </Link>
+                  {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </button>
               </div>
             </div>
-
           </div>
 
-          {/* Mobile: single row */}
           <div className="flex lg:hidden items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-2">
-              <img
-                src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/5caa39d92_WhatsAppImage2026-05-29at231537.jpg"
-                alt="University of Abuja"
-                className="h-8 w-auto object-contain"
-              />
-              <img
-                src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/14974f33a_logo_200x64.jpeg"
-                alt="TASS Nigeria 2026"
-                className="h-10 w-auto object-contain"
-              />
-              <img
-                src="https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/fb3b51eb6_cemrilogo.png"
-                alt="CEMRI"
-                className="h-8 w-auto object-contain"
-              />
+            <Link to="/" className="flex items-center gap-2" aria-label="Home">
+              <img src="/logo-uniabuja.png" alt="University of Abuja" className="h-8 w-auto object-contain" loading="lazy" />
+              <span className="font-heading font-bold text-foreground text-sm">TASS Nigeria 2026</span>
             </Link>
-            <button
-              onClick={() => setOpen(!open)}
-              className="p-2 text-foreground"
-              aria-label="Toggle menu"
-            >
-              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={toggle}
+                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-foreground"
+                aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {dark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+              <button
+                onClick={() => setOpen(!open)}
+                className="p-2 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg"
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+              >
+                {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -117,6 +105,9 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-background flex flex-col justify-center px-10"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
           >
             <div className="space-y-1">
               {navLinks.map((l, i) => (
@@ -128,19 +119,17 @@ export default function Navbar() {
                 >
                   <Link
                     to={l.href}
-                    className="block py-3 text-3xl font-display font-bold text-foreground hover:text-accent transition-colors"
+                    className={`block py-3 text-3xl font-display font-bold transition-colors focus-visible:outline-none focus-visible:text-accent ${
+                      location.pathname === l.href ? "text-accent" : "text-foreground hover:text-accent"
+                    }`}
+                    aria-current={location.pathname === l.href ? "page" : undefined}
                   >
                     {l.label}
                   </Link>
                 </motion.div>
               ))}
             </div>
-            <Link
-              to="/register"
-              className="mt-10 inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-full w-fit"
-            >
-              Register Now <ArrowRight className="w-4 h-4" />
-            </Link>
+
           </motion.div>
         )}
       </AnimatePresence>

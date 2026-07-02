@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
-import { Calendar, Clock, MapPin, Mic, Users, Coffee } from "lucide-react";
+import { Calendar, Clock, Mic, Users, Coffee } from "lucide-react";
 
 const days = [
   {

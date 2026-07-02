@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeading from "../conference/SectionHeading";
 
-const SCHOLARS_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/c5692d51c_generated_0a16fbea.png";
+const SCHOLARS_IMG = "/scholars.jpg";
 
 export default function AboutPreview() {
   return (

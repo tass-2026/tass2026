@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-const ABUJA_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e2ee9091c_generated_ffd33e56.png";
+const ABUJA_IMG = "/abuja-skyline.jpg";
 
 export default function CTABanner() {
   return (
     <section className="relative py-24 md:py-36 overflow-hidden">
       <div className="absolute inset-0">
         <img src={ABUJA_IMG} alt="Abuja skyline" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-navy/70" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 text-center">

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
 import { Trophy, Clock, Users, Zap, Code, Shield, Leaf, Heart, GraduationCap } from "lucide-react";
 
-const HACKATHON_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/57f880cfe_generated_8b9e609f.png";
+const HACKATHON_IMG = "";
 
 const hackathonTracks = [
   { icon: Zap, title: "EdTech & Digital Learning", desc: "Solutions for accessible, quality education across Africa.", bg: "bg-yellow-50 border-yellow-200", iconColor: "text-yellow-700" },
@@ -86,17 +86,17 @@ export default function Hackathon() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`text-center rounded-2xl p-8 border ${
-                  i === 0
-                    ? "bg-accent text-accent-foreground border-accent shadow-xl scale-105"
-                    : "bg-card border-border"
+                className={`text-center rounded-2xl p-8 border shadow-xl ${
+                  i === 0 ? "bg-amber-500 text-white border-amber-500 scale-105" :
+                  i === 1 ? "bg-sky-500 text-white border-sky-500" :
+                  "bg-emerald-500 text-white border-emerald-500"
                 }`}
               >
-                <p className={`text-sm font-semibold uppercase tracking-wider mb-2 ${i === 0 ? "text-accent-foreground/70" : "text-muted-foreground"}`}>
+                <p className="text-sm font-semibold uppercase tracking-wider mb-2 text-white/70">
                   {p.place}
                 </p>
                 <p className="font-display font-extrabold text-3xl mb-1">{p.amount}</p>
-                <p className={`text-sm ${i === 0 ? "text-accent-foreground/70" : "text-muted-foreground"}`}>{p.desc}</p>
+                <p className="text-sm text-white/70">{p.desc}</p>
               </motion.div>
             ))}
           </div>

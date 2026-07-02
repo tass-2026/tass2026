@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/conference/SectionHeading";
 import { Globe, Award, Lightbulb, Users, BookOpen, Handshake, Mic2, Building2, FlaskConical, Landmark, ChevronDown } from "lucide-react";
 
-const SCHOLARS_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/c5692d51c_generated_0a16fbea.png";
+const SCHOLARS_IMG = "/scholars.jpg";
 
 const features = [
   { icon: Globe, title: "International Platform", desc: "Bringing together leading researchers, innovators, and policymakers from across Africa and around the world.", bg: "bg-green-50", iconBg: "bg-green-100", iconColor: "text-green-700" },
@@ -18,15 +18,15 @@ const partners = [
   {
     icon: FlaskConical, label: "Partnership Institutions", bg: "bg-purple-50", iconBg: "bg-purple-100", iconColor: "text-purple-700",
     logos: [
-      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/e325559fb_1000509502.png", name: "21st Century Open University" },
+      { src: "", name: "21st Century Open University" },
     ]
   },
   {
     icon: Building2, label: "Partnership Industry", bg: "bg-teal-50", iconBg: "bg-teal-100", iconColor: "text-teal-700",
     logos: [
-      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/ef8dff6b3_WhatsAppImage2026-06-22at134547.jpg", name: "ResTV — Research Television" },
-      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/910c524b8_WhatsAppImage2026-06-22at1345471.jpeg", name: "CEFPACS Consulting Limited" },
-      { src: "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/bf76fdfe6_WhatsAppImage2026-06-22at1345472.jpeg", name: "TripWinga" },
+      { src: "", name: "ResTV — Research Television" },
+      { src: "", name: "CEFPACS Consulting Limited" },
+      { src: "", name: "TripWinga" },
     ]
   },
   {
@@ -83,6 +83,57 @@ function PartnerAccordion() {
         );
       })}
     </div>
+  );
+}
+
+function LOCSection() {
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    fetch("/LOC.csv")
+      .then((r) => r.text())
+      .then((text) => {
+        const lines = text.trim().split("\n");
+        const parsed = lines.map((line) => {
+          const [name, position] = line.split(",").map((s) => s.trim());
+          return { name, position };
+        });
+        setMembers(parsed);
+      })
+      .catch(() => {});
+  }, []);
+
+  if (members.length === 0) return null;
+
+  return (
+    <section className="py-20 md:py-32 bg-muted/50">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+        <SectionHeading
+          label="Committee"
+          title="Local Organising Committee (LOC)"
+          description="The dedicated team organising TASS Nigeria 2026."
+          align="center"
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-8">
+          {members.map((m, i) => (
+            <motion.div
+              key={m.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04, duration: 0.4 }}
+              className="bg-card border border-border rounded-xl p-5 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center mb-3">
+                <Users className="w-5 h-5 text-gold" />
+              </div>
+              <h4 className="font-heading font-bold text-sm text-foreground leading-snug">{m.name}</h4>
+              <p className="text-xs text-muted-foreground mt-1">{m.position}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -180,6 +231,64 @@ export default function About() {
         </div>
       </section>
 
+      {/* Keynote Speaker Citation */}
+      <section className="py-20 md:py-32 bg-gradient-to-br from-navy to-navy-light text-white">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+          <SectionHeading
+            label="Keynote Speaker Citation"
+            title="Emeritus Prof. Steven Timipa Odi-Owei"
+            description="A renowned scholar and academic leader with over five decades of contributions to engineering and education."
+            light
+            align="center"
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start mt-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-2"
+            >
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                <img src="/Photo_Odi.jpeg" alt="Emeritus Prof. Steven Timipa Odi-Owei" className="w-full aspect-[3/4] object-cover" />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="lg:col-span-3"
+            >
+              <h3 className="text-gold font-heading font-bold text-2xl md:text-3xl mb-2">
+                Engr. Emeritus Prof. Steven Timipa Odi-Owei
+              </h3>
+              <p className="text-white/60 text-sm mb-6">FNSE, FAAS, FNAEng</p>
+              <div className="space-y-4 text-white/80 text-sm leading-relaxed">
+                <p>
+                  Emeritus Professor Steven Timipa Odi-Owei is a renowned scholar, engineer, and academic leader with a distinguished career spanning over five decades. Born on June 21, 1945, in Accra, Ghana, he has made significant contributions to engineering education, research, and professional development in Nigeria and beyond.
+                </p>
+                <p>
+                  He earned his B.Sc. (Hons) in Mechanical Engineering from Ahmadu Bello University, Zaria in 1970, followed by a Master&rsquo;s degree in Automotive Studies from Cranfield Institute of Technology, UK (1972), and a Ph.D. in Tribology from the University of Wales, Swansea (1976). A pioneer in the field of tribology in Nigeria, he established the country&rsquo;s first Tribology Laboratory at the Rivers State University of Science and Technology, where he was appointed Professor of Mechanical Engineering in 1990.
+                </p>
+                <p>
+                  Prof. Odi-Owei is a Fellow of the Nigerian Society of Engineers, the Nigerian Academy of Engineering, the African Academy of Sciences, and the Institution of Diagnostic Engineers, UK. He is also a Life Member of the Nigerian Institution of Mechanical Engineers, the Foundation President of the Tribology Society of Nigeria, and a member of the Guild of Tribologists, International Tribology Congress, Poland.
+                </p>
+                <p>
+                  He served with distinction as Head of Department, Dean of the Faculty of Engineering, Deputy Vice-Chancellor (1995&ndash;1996), and Vice-Chancellor (1996&ndash;2000) at RSUST. He has held visiting positions at the University of Wales, Swansea; Delft Technical University, The Netherlands; the University of Essex, UK; the University of Port Harcourt; and Niger Delta University.
+                </p>
+                <p>
+                  In recognition of his outstanding service and academic legacy, Rivers State University conferred on him the title of Emeritus Professor of Mechanical Engineering in 2015. He has served as Pro-Chancellor and Chairman of Governing Council of Anchor University, Lagos, and is currently the Pro-Chancellor and Chairman of Governing Council of Niger Delta University, Bayelsa State.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Organising Committee */}
+      <LOCSection />
+
       {/* Partners */}
       <section className="py-20 md:py-32">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
@@ -197,7 +306,7 @@ export default function About() {
       <section className="py-20 md:py-32 bg-primary text-primary-foreground">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <SectionHeading
-            label="Organizers"
+            label="Organisers"
             title="Centre for Multidisciplinary Research and Innovation"
             description="CEMRI, University of Abuja, is the host institution for TASS Nigeria 2026. The Centre brings together cross-disciplinary expertise to examine migration, integration, and sustainable development across Africa."
             light

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Trophy, Clock, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
-const HACKATHON_IMG = "https://media.base44.com/images/public/6a359631188c7bfda4ca24b0/57f880cfe_generated_8b9e609f.png";
+const HACKATHON_IMG = "/hackathon.jpg";
 
 export default function HackathonPreview() {
   return (

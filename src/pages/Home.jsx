@@ -3,6 +3,7 @@ import HeroSection from "@/components/home/HeroSection";
 import AboutPreview from "@/components/home/AboutPreview";
 import ThemesPreview from "@/components/home/ThemesPreview";
 import HackathonPreview from "@/components/home/HackathonPreview";
+import StatsCounter from "@/components/home/StatsCounter";
 import CTABanner from "@/components/home/CTABanner";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <HeroSection />
       <AboutPreview />
       <ThemesPreview />
+      <StatsCounter />
       <HackathonPreview />
       <CTABanner />
     </>
