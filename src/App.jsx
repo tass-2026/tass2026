@@ -19,10 +19,11 @@ import FAQ from '@/pages/FAQ';
 import { ThemeProvider } from '@/lib/ThemeProvider';
 
 function App() {
+  const routerBasename = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router basename="/tass2026">
+        <Router basename={routerBasename}>
           <ScrollToTop />
           <Routes>
             <Route element={<Layout />}>
