@@ -22,7 +22,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install
-      - run: VITE_BASE_PATH=/osagie/ pnpm build
+      - run: VITE_BASE_PATH=/tass2026/ pnpm build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
